@@ -1,0 +1,12 @@
+C:\Projects\MovieRatingWebApplication\Movies.Application\obj\Debug\net9.0\Movies.Application.csproj.AssemblyReference.cache
+C:\Projects\MovieRatingWebApplication\Movies.Application\obj\Debug\net9.0\Movies.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\MovieRatingWebApplication\Movies.Application\obj\Debug\net9.0\Movies.Application.AssemblyInfoInputs.cache
+C:\Projects\MovieRatingWebApplication\Movies.Application\obj\Debug\net9.0\Movies.Application.AssemblyInfo.cs
+C:\Projects\MovieRatingWebApplication\Movies.Application\obj\Debug\net9.0\Movies.Application.csproj.CoreCompileInputs.cache
+C:\Projects\MovieRatingWebApplication\Movies.Application\bin\Debug\net9.0\Movies.Application.deps.json
+C:\Projects\MovieRatingWebApplication\Movies.Application\bin\Debug\net9.0\Movies.Application.dll
+C:\Projects\MovieRatingWebApplication\Movies.Application\bin\Debug\net9.0\Movies.Application.pdb
+C:\Projects\MovieRatingWebApplication\Movies.Application\obj\Debug\net9.0\Movies.Application.dll
+C:\Projects\MovieRatingWebApplication\Movies.Application\obj\Debug\net9.0\refint\Movies.Application.dll
+C:\Projects\MovieRatingWebApplication\Movies.Application\obj\Debug\net9.0\Movies.Application.pdb
+C:\Projects\MovieRatingWebApplication\Movies.Application\obj\Debug\net9.0\ref\Movies.Application.dll

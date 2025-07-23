@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Api", "Movies.Api\Movies.Api.csproj", "{0B79F521-370C-470E-964F-4CBE272DF53B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Application", "Movies.Application\Movies.Application.csproj", "{CFB7F049-1466-4D8E-8D83-7BEEB7E70E99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Contracts", "Movies.Contracts\Movies.Contracts.csproj", "{2C6E4EB6-CBDA-417B-B405-AF3E7F64A52E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8E14E939-B4C7-4732-B462-4C5CCC4BA748}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yaml = docker-compose.yaml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B79F521-370C-470E-964F-4CBE272DF53B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B79F521-370C-470E-964F-4CBE272DF53B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B79F521-370C-470E-964F-4CBE272DF53B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B79F521-370C-470E-964F-4CBE272DF53B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFB7F049-1466-4D8E-8D83-7BEEB7E70E99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFB7F049-1466-4D8E-8D83-7BEEB7E70E99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFB7F049-1466-4D8E-8D83-7BEEB7E70E99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFB7F049-1466-4D8E-8D83-7BEEB7E70E99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C6E4EB6-CBDA-417B-B405-AF3E7F64A52E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C6E4EB6-CBDA-417B-B405-AF3E7F64A52E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C6E4EB6-CBDA-417B-B405-AF3E7F64A52E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C6E4EB6-CBDA-417B-B405-AF3E7F64A52E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

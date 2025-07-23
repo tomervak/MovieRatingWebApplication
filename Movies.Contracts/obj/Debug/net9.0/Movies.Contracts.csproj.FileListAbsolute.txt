@@ -1,0 +1,11 @@
+C:\Projects\MovieRatingWebApplication\Movies.Contracts\bin\Debug\net9.0\Movies.Contracts.deps.json
+C:\Projects\MovieRatingWebApplication\Movies.Contracts\bin\Debug\net9.0\Movies.Contracts.dll
+C:\Projects\MovieRatingWebApplication\Movies.Contracts\bin\Debug\net9.0\Movies.Contracts.pdb
+C:\Projects\MovieRatingWebApplication\Movies.Contracts\obj\Debug\net9.0\Movies.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\MovieRatingWebApplication\Movies.Contracts\obj\Debug\net9.0\Movies.Contracts.AssemblyInfoInputs.cache
+C:\Projects\MovieRatingWebApplication\Movies.Contracts\obj\Debug\net9.0\Movies.Contracts.AssemblyInfo.cs
+C:\Projects\MovieRatingWebApplication\Movies.Contracts\obj\Debug\net9.0\Movies.Contracts.csproj.CoreCompileInputs.cache
+C:\Projects\MovieRatingWebApplication\Movies.Contracts\obj\Debug\net9.0\Movies.Contracts.dll
+C:\Projects\MovieRatingWebApplication\Movies.Contracts\obj\Debug\net9.0\refint\Movies.Contracts.dll
+C:\Projects\MovieRatingWebApplication\Movies.Contracts\obj\Debug\net9.0\Movies.Contracts.pdb
+C:\Projects\MovieRatingWebApplication\Movies.Contracts\obj\Debug\net9.0\ref\Movies.Contracts.dll
