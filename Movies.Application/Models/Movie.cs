@@ -18,8 +18,8 @@ public class Movie
     
     private string GenerateSlug()
     {
-        var sluggedTitle = Regex.Replace(Title, @"[^a-z0-9\s-]", "").ToLower().Replace(" ","-");
-        var sluggedDirector = Regex.Replace(Director, @"[^a-z0-9\s-]", "").ToLower().Replace(" ","-");
+        var sluggedTitle = Regex.Replace(Title, @"[^0-9A-Za-z _-]", "").ToLower().Replace(" ","-");
+        var sluggedDirector = Regex.Replace(Director, @"^0-9A-Za-z _-]", "").ToLower().Replace(" ","-");
         return $"{sluggedTitle}-{sluggedDirector}-{YearOfRelease}";
     }
 }

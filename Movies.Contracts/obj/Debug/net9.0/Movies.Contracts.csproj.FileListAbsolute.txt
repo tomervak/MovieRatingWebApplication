@@ -9,3 +9,4 @@ C:\Projects\MovieRatingWebApplication\Movies.Contracts\obj\Debug\net9.0\Movies.C
 C:\Projects\MovieRatingWebApplication\Movies.Contracts\obj\Debug\net9.0\refint\Movies.Contracts.dll
 C:\Projects\MovieRatingWebApplication\Movies.Contracts\obj\Debug\net9.0\Movies.Contracts.pdb
 C:\Projects\MovieRatingWebApplication\Movies.Contracts\obj\Debug\net9.0\ref\Movies.Contracts.dll
+C:\Projects\MovieRatingWebApplication\Movies.Contracts\obj\Debug\net9.0\Movies.Contracts.sourcelink.json

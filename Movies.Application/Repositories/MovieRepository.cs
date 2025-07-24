@@ -14,7 +14,7 @@ public class MovieRepository : IMovieRepository
         _dbConnectionFactory = dbConnectionFactory;
     }
 
-    public async Task<Movie?> GetMovieById(int id)
+    public async Task<Movie?> GetMovieByIdAsync(Guid id)
     {
         using var connection = await _dbConnectionFactory.CreateConnectionAsync();
         var movie = await connection.QuerySingleOrDefaultAsync<Movie>("SELECT * FROM movies WHERE Id = @Id",
@@ -32,25 +32,26 @@ public class MovieRepository : IMovieRepository
         return movie;
     }
 
-    public async Task<IEnumerable<Movie>> GetAllMovies()
+    public async Task<IEnumerable<Movie>> GetAllMoviesAsync()
     {
         using var connection = await _dbConnectionFactory.CreateConnectionAsync();
         var result = await connection.QueryAsync(new CommandDefinition("""
                                                                        select m.*, string_agg(g.name, ',') as genres
-                                                                       from movies m left join genres g on m.id = g.movieid
+                                                                       from movies m
+                                                                       left join genres g on m.id = g.movieId
                                                                        group by id
                                                                        """));
         return result.Select(x => new Movie
         {
-            Id = x.Id,
-            Title = x.Title,
-            Director = x.Director,
-            YearOfRelease = x.YearOfRelease,
-            Genres = Enumerable.ToList(x.genres.split(','))
+            Id = x.id,
+            Title = x.title,
+            Director = x.director,
+            YearOfRelease = x.yearofrelease,
+            Genres = Enumerable.ToList(x.genres.Split(','))
         });
     }
 
-    public async Task<bool> CreateMovie(Movie movie)
+    public async Task<bool> CreateMovieAsync(Movie movie)
     {
         using var connection = await _dbConnectionFactory.CreateConnectionAsync();
         using var transaction = connection.BeginTransaction();
@@ -74,7 +75,7 @@ public class MovieRepository : IMovieRepository
         return result > 0;
     }
 
-    public async Task<bool> UpdateMovie(Movie movie)
+    public async Task<bool> UpdateMovieAsync(Movie movie)
     {
         using var connection = await _dbConnectionFactory.CreateConnectionAsync();
         using var transaction = connection.BeginTransaction();
@@ -98,7 +99,7 @@ public class MovieRepository : IMovieRepository
         return result > 0;
     }
 
-    public async Task<bool> DeleteMovie(int id)
+    public async Task<bool> DeleteMovieAsync(Guid id)
     {
         using var connection = await _dbConnectionFactory.CreateConnectionAsync();
         using var transaction = connection.BeginTransaction();
@@ -113,7 +114,7 @@ public class MovieRepository : IMovieRepository
         return result > 0;
     }
 
-    public async Task<Movie?> GetMovieBySlug(string slug)
+    public async Task<Movie?> GetMovieBySlugAsync(string slug)
     {
         using var connection = await _dbConnectionFactory.CreateConnectionAsync();
         var movie = await connection.QuerySingleOrDefaultAsync<Movie>("SELECT * FROM movies WHERE Slug = @Slug",
@@ -131,7 +132,7 @@ public class MovieRepository : IMovieRepository
         return movie;
     }
 
-    public async Task<bool> ExistByMovieId(int id)
+    public async Task<bool> ExistByMovieIdAsync(Guid id)
     {
         using var connection = await _dbConnectionFactory.CreateConnectionAsync();
         return await connection.ExecuteScalarAsync<bool>(new CommandDefinition("""

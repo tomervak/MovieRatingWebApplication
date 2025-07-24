@@ -10,3 +10,4 @@ C:\Projects\MovieRatingWebApplication\Movies.Application\obj\Debug\net9.0\Movies
 C:\Projects\MovieRatingWebApplication\Movies.Application\obj\Debug\net9.0\refint\Movies.Application.dll
 C:\Projects\MovieRatingWebApplication\Movies.Application\obj\Debug\net9.0\Movies.Application.pdb
 C:\Projects\MovieRatingWebApplication\Movies.Application\obj\Debug\net9.0\ref\Movies.Application.dll
+C:\Projects\MovieRatingWebApplication\Movies.Application\obj\Debug\net9.0\Movies.Application.sourcelink.json
