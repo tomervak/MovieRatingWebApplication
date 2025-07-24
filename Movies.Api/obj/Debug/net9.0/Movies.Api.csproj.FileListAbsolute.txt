@@ -41,7 +41,6 @@ C:\Projects\MovieRatingWebApplication\Movies.Api\obj\Debug\net9.0\Movies.Api.gen
 C:\Projects\MovieRatingWebApplication\Movies.Api\obj\Debug\net9.0\ref\Movies.Api.dll
 C:\Projects\MovieRatingWebApplication\Movies.Api\obj\Debug\net9.0\Movies.Api.sourcelink.json
 C:\Projects\MovieRatingWebApplication\Movies.Api\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:\Projects\MovieRatingWebApplication\Movies.Api\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
 C:\Projects\MovieRatingWebApplication\Movies.Api\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Projects\MovieRatingWebApplication\Movies.Api\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
 C:\Projects\MovieRatingWebApplication\Movies.Api\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll

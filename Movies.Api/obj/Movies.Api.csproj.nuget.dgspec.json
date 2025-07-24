@@ -53,7 +53,7 @@
           "dependencies": {
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[6.0.9, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
