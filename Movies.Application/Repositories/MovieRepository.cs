@@ -1,4 +1,3 @@
-using System.Transactions;
 using Dapper;
 using Movies.Application.Database;
 using Movies.Application.Models;
@@ -14,11 +13,18 @@ public class MovieRepository : IMovieRepository
         _dbConnectionFactory = dbConnectionFactory;
     }
 
-    public async Task<Movie?> GetMovieByIdAsync(Guid id)
+    public async Task<Movie?> GetMovieByIdAsync(Guid id, Guid? userId = default)
     {
         using var connection = await _dbConnectionFactory.CreateConnectionAsync();
-        var movie = await connection.QuerySingleOrDefaultAsync<Movie>("SELECT * FROM movies WHERE Id = @Id",
-            new { Id = id });
+        var movie = await connection.QuerySingleOrDefaultAsync<Movie>("""
+                                                                      SELECT m.*  , round(avg(r.rating),1) as rating, myr.rating as userrating
+                                                                      FROM movies m
+                                                                      left join ratings r on m.id = r.movieid
+                                                                      left join ratings myr on m.id = myr.movieid 
+                                                                                                  and myr.userid = @userId 
+                                                                      WHERE id = @Id
+                                                                      group by id,userrating
+                                                                      """, new { id, userId });
 
         if (movie == null)
             return null;
@@ -32,21 +38,41 @@ public class MovieRepository : IMovieRepository
         return movie;
     }
 
-    public async Task<IEnumerable<Movie>> GetAllMoviesAsync()
+    public async Task<IEnumerable<Movie>> GetAllMoviesAsync(GetAllMoviesOptions options)
     {
         using var connection = await _dbConnectionFactory.CreateConnectionAsync();
-        var result = await connection.QueryAsync(new CommandDefinition("""
-                                                                       select m.*, string_agg(g.name, ',') as genres
+
+        var orderClause = string.Empty;
+        if (options.SortField is not null)
+        {
+            orderClause = $"""
+                           ,m.{options.SortField}
+                           order by m.{options.SortField} {(options.SortOrder== SortOrder.Ascending ? "asc" : "desc")} 
+                           """;
+        }
+        
+        var result = await connection.QueryAsync(new CommandDefinition($"""
+                                                                       select m.*,
+                                                                              string_agg(distinct g.name, ',') as genres,
+                                                                              round(avg(r.rating),1) as rating,
+                                                                              myr.rating as userrating
                                                                        from movies m
                                                                        left join genres g on m.id = g.movieId
-                                                                       group by id
-                                                                       """));
+                                                                       left join ratings r on m.id = r.movieid
+                                                                       left join ratings myr on m.id = myr.movieid and myr.userid = @userId
+                                                                       where (@title is null or m.title like ('%' || @title || '%'))
+                                                                       and (@yearofrelease is null or m.yearofrelease = @yearofrelease)
+                                                                       and (@director is null or m.director = @director)
+                                                                       group by id,userrating {orderClause}
+                                                                       """, new {userId= options.UserId, title = options.Title, yearofrelease = options.YearOfRelease, director = options.Director}));
         return result.Select(x => new Movie
         {
             Id = x.id,
             Title = x.title,
             Director = x.director,
             YearOfRelease = x.yearofrelease,
+            Rating = (float?)x.rating,
+            UserRating = (int?)x.userrating,
             Genres = Enumerable.ToList(x.genres.Split(','))
         });
     }
@@ -114,11 +140,18 @@ public class MovieRepository : IMovieRepository
         return result > 0;
     }
 
-    public async Task<Movie?> GetMovieBySlugAsync(string slug)
+    public async Task<Movie?> GetMovieBySlugAsync(string slug,  Guid? userId = default)
     {
         using var connection = await _dbConnectionFactory.CreateConnectionAsync();
-        var movie = await connection.QuerySingleOrDefaultAsync<Movie>("SELECT * FROM movies WHERE Slug = @Slug",
-            new { slug });
+        var movie = await connection.QuerySingleOrDefaultAsync<Movie>("""
+                                                                      SELECT m.*  , round(avg(r.rating),1) as rating, myr.rating as userrating
+                                                                      FROM movies m
+                                                                      left join ratings r on m.id = r.movieid
+                                                                      left join ratings myr on m.id = myr.movieid 
+                                                                                                  and myr.userid = @userId 
+                                                                      WHERE slug = @slug
+                                                                      group by id,userrating
+                                                                      """, new { slug, userId });
 
         if (movie == null)
             return null;
