@@ -17,4 +17,6 @@ public interface IMovieRepository
     public Task<Movie?> GetMovieBySlugAsync(string slug,   Guid? userId = default);
     
     public Task<bool> ExistByMovieIdAsync(Guid id);
+
+    public Task<int> GetCountAsync(string? title, int? yearOfRelease);
 }

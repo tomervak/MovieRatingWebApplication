@@ -15,4 +15,7 @@ public interface IMovieService
     public Task<bool> DeleteMovieAsync(Guid id);
     
     public Task<Movie?> GetMovieBySlugAsync(string slug,  Guid? userId = default);
+    
+    public Task<int> GetCountAsync(string? title, int? yearOfRelease);
+
 }

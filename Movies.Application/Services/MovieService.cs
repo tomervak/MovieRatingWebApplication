@@ -65,4 +65,9 @@ public class MovieService : IMovieService
     {
         return _movieRepository.GetMovieBySlugAsync(slug, userId);
     }
+
+    public Task<int> GetCountAsync(string? title, int? yearOfRelease)
+    {
+        return _movieRepository.GetCountAsync(title, yearOfRelease);
+    }
 }

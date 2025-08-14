@@ -64,7 +64,15 @@ public class MovieRepository : IMovieRepository
                                                                        and (@yearofrelease is null or m.yearofrelease = @yearofrelease)
                                                                        and (@director is null or m.director = @director)
                                                                        group by id,userrating {orderClause}
-                                                                       """, new {userId= options.UserId, title = options.Title, yearofrelease = options.YearOfRelease, director = options.Director}));
+                                                                       limit @pageSize
+                                                                       offset @pageOffSet
+                                                                       """, new
+        {
+            userId= options.UserId, title = options.Title,
+            yearofrelease = options.YearOfRelease, director = options.Director,
+            pageSize=options.PageSize,
+            pageOffSet= (options.Page -1) * options.PageSize
+        }));
         return result.Select(x => new Movie
         {
             Id = x.id,
@@ -171,5 +179,16 @@ public class MovieRepository : IMovieRepository
         return await connection.ExecuteScalarAsync<bool>(new CommandDefinition("""
                                                                                select count(1) from movies WHERE id = @id
                                                                                """, new { id }));
+    }
+
+    public async Task<int> GetCountAsync(string? title, int? yearOfRelease)
+    {
+        using var connection = await _dbConnectionFactory.CreateConnectionAsync();
+        return await connection.QuerySingleAsync<int>(new CommandDefinition("""
+                                                                            select count(id) from movies
+                                                                            where (@title is null or title like ('%' || @title || '%'))
+                                                                            and (@yearOfRelease is null or yearOfRelease = @yearOfRelease)
+                                                                            """, new {title, yearOfRelease}));
+
     }
 }
