@@ -33,11 +33,15 @@ public static class ContractMapping
         };
     }
 
-    public static MoviesResponse MapToMoviesResponses(this IEnumerable<Movie> movies)
+    public static MoviesResponse MapToMoviesResponses(this IEnumerable<Movie> movies,
+        int page, int pageSize, int count)
     {
         return new MoviesResponse
         {
-            Items = movies.Select(MapToMovieResponse)
+            Items = movies.Select(MapToMovieResponse),
+            Page = page,
+            PageSize = pageSize,
+            TotalCount = count
         };
     }
 
@@ -73,7 +77,9 @@ public static class ContractMapping
             SortField = request.SortBy?.Trim('+','-'),
             SortOrder = request.SortBy is  null ?
                 SortOrder.Unsorted 
-                : request.SortBy.StartsWith('-') ? SortOrder.Descending : SortOrder.Ascending
+                : request.SortBy.StartsWith('-') ? SortOrder.Descending : SortOrder.Ascending,
+            PageSize = request.PageSize,
+            Page = request.Page
             
         };
     }
